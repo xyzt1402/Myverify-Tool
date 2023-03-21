@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "61657563349",
+    "project_id": "myverifytool-project",
+    "storage_bucket": "myverifytool-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61657563349:android:62bcf83712d579af0fa25c",
+        "android_client_info": {
+          "package_name": "com.example.learningdart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61657563349-pp8gjfvh2ahlr7ed82qi8r53pvua5p6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjniTFBmdIquQTJgfY27C6W0zStmHKz9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61657563349-pp8gjfvh2ahlr7ed82qi8r53pvua5p6t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
