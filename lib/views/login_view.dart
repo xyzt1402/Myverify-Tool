@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
 import 'package:go_router/go_router.dart';
+import 'package:learningdart/constants/routes.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -62,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                   password: password,
                 );
                 if (context.mounted) {
-                  context.go('/notes');
+                  context.go(notesRoute);
                 }
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
@@ -79,7 +80,7 @@ class _LoginViewState extends State<LoginView> {
           ),
           TextButton(
             onPressed: () {
-              context.go('/register');
+              context.go(registerRoute);
             },
             child: const Text('Not registered yet? Register here!'),
           )

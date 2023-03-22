@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
 import 'package:go_router/go_router.dart';
+import 'package:learningdart/constants/routes.dart';
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 
@@ -76,7 +77,7 @@ class _RegisterViewState extends State<RegisterView> {
             child: const Text('Register'),
           ),
           TextButton(onPressed: () {
-            context.go('/login');
+            context.go(loginRoute);
           }, child: const Text('Already register? Login here!'))
         ],
       ),

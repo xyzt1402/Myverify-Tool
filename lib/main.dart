@@ -9,24 +9,25 @@ import 'package:learningdart/views/verify_view.dart';
 import 'package:learningdart/views/notes_view.dart';
 import 'package:go_router/go_router.dart';
 
+import 'constants/routes.dart';
 import 'firebase_options.dart';
 
 final _router = GoRouter(
   routes: [
     GoRoute(
-      path: '/',
+      path: homeRoute,
       builder: (context, state) => const HomePage(),
     ),
     GoRoute(
-      path: '/login',
+      path: loginRoute,
       builder: (context, state) => const LoginView(),
     ),
     GoRoute(
-      path: '/register',
+      path: registerRoute,
       builder: (context, state) => const RegisterView(),
     ),
     GoRoute(
-      path: '/notes',
+      path: notesRoute,
       builder: (context, state) => const NotesView(),
     ),
   ],
