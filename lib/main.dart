@@ -1,5 +1,3 @@
-import 'dart:developer' as devtools show log;
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +27,10 @@ final _router = GoRouter(
     GoRoute(
       path: notesRoute,
       builder: (context, state) => const NotesView(),
+    ),
+    GoRoute(
+      path: verifyEmailRoute,
+      builder: (context, state) => const VerifyEmailView(),
     ),
   ],
 );
