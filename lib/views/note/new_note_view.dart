@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learningdart/services/auth/auth_services.dart';
 import 'package:learningdart/services/crud/notes_services.dart';
-import 'package:sqflite/sqflite.dart';
 
 class NewNoteView extends StatefulWidget {
   const NewNoteView({super.key});
@@ -97,7 +96,6 @@ class _NewNoteViewState extends State<NewNoteView> {
                     hintText: 'Start typing your note',
                   ),
                 );
-                break;
               default:
                 return const CircularProgressIndicator();
             }
