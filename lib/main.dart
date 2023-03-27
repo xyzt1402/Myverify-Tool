@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:learningdart/services/auth/auth_services.dart';
 import 'package:learningdart/views/login_view.dart';
+import 'package:learningdart/views/note/new_note_view.dart';
 import 'package:learningdart/views/register_view.dart';
 import 'package:learningdart/views/verify_view.dart';
-import 'package:learningdart/views/notes_view.dart';
 import 'package:go_router/go_router.dart';
+import 'package:learningdart/views/note/notes_view.dart';
 
 import 'constants/routes.dart';
 
@@ -29,6 +30,10 @@ final _router = GoRouter(
     GoRoute(
       path: verifyEmailRoute,
       builder: (context, state) => const VerifyEmailView(),
+    ),
+    GoRoute(
+      path: newNoteRoute,
+      builder: (context, state) => const NewNoteView(),
     ),
   ],
 );

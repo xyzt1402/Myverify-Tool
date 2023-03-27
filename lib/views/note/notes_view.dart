@@ -16,7 +16,7 @@ class _NotesViewState extends State<NotesView> {
   late final NotesService _notesService;
   String get userEmail => AuthService.firebase().currentUser!.email!;
 
-  @override
+  @override 
   void initState() {
     _notesService = NotesService();
     _notesService.open();
@@ -33,8 +33,11 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main UI'),
+        title: const Text('Your Notes'),
         actions: [
+          IconButton(onPressed: () {
+            context.push(newNoteRoute);
+          }, icon: const Icon(Icons.add)),
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {
               switch (value) {
