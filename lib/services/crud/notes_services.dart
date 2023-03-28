@@ -23,7 +23,6 @@ class NotesService {
   factory NotesService() => _shared;
 
   late final StreamController<List<DatabaseNote>> _notesStreamController;
-      
 
   Stream<List<DatabaseNote>> get allNotes => _notesStreamController.stream;
 
@@ -69,7 +68,7 @@ class NotesService {
     await _ensureDbIsOpen();
     final db = _getDatabseOrThrow();
     final deleteCount = await db.delete(
-      userTable,
+      noteTable,
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -127,11 +126,15 @@ class NotesService {
     //make sure note exist
     await getNote(id: note.id);
     //update DB
-    final updatesCount = await db.update(noteTable, {
-      textColumn: text,
-      isSyncedwithCloudColumn: 0,
-    });
-
+    final updatesCount = await db.update(
+        noteTable,
+        {
+          textColumn: text,
+          isSyncedwithCloudColumn: 0,
+        },
+        where: 'id=?',
+        whereArgs: [note.id]);
+  
     if (updatesCount == 0) {
       throw CouldNotUpdateNote();
     } else {
