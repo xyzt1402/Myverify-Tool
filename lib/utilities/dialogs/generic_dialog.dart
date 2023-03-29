@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 typedef DiaglogOptionBuilder<T> = Map<String, T?> Function();
 
@@ -21,9 +20,9 @@ Future<T?> showGenericDialog<T>({
           return TextButton(
             onPressed: () {
               if (value != null) {
-                context.pop(value);
+                Navigator.of(context).pop(value);
               } else {
-                context.pop();
+                Navigator.of(context).pop();
               }
             },
             child: Text(optionTitle),

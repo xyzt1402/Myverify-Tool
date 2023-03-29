@@ -1,52 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:learningdart/services/auth/auth_services.dart';
 import 'package:learningdart/views/login_view.dart';
-import 'package:learningdart/views/note/new_note_view.dart';
+import 'package:learningdart/views/note/create_update_note_view.dart';
 import 'package:learningdart/views/register_view.dart';
 import 'package:learningdart/views/verify_view.dart';
-import 'package:go_router/go_router.dart';
 import 'package:learningdart/views/note/notes_view.dart';
-
 import 'constants/routes.dart';
 
-final _router = GoRouter(
-  routes: [
-    GoRoute(
-      path: homeRoute,
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      path: loginRoute,
-      builder: (context, state) => const LoginView(),
-    ),
-    GoRoute(
-      path: registerRoute,
-      builder: (context, state) => const RegisterView(),
-    ),
-    GoRoute(
-      path: notesRoute,
-      builder: (context, state) => const NotesView(),
-    ),
-    GoRoute(
-      path: verifyEmailRoute,
-      builder: (context, state) => const VerifyEmailView(),
-    ),
-    GoRoute(
-      path: newNoteRoute,
-      builder: (context, state) => const NewNoteView(),
-    ),
-  ],
-);
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    MaterialApp.router(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routerConfig: _router,
-    ),
+    MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        routes: {
+          createOrUpdateNoteRoute: (context) => const CreateUpdateNoteView(),
+          homeRoute: (context) => const HomePage(),
+          loginRoute: (context) => const LoginView(),
+          registerRoute: (context) => const RegisterView(),
+          notesRoute: (context) => const NotesView(),
+          verifyEmailRoute: (context) => const VerifyEmailView(),
+        }),
   );
 }
 
@@ -77,5 +53,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-

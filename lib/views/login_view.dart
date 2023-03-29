@@ -1,7 +1,4 @@
-import 'dart:developer' as devs;
-
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:learningdart/constants/routes.dart';
 import 'package:learningdart/services/auth/auth_exceptions.dart';
 import 'package:learningdart/services/auth/auth_services.dart';
@@ -67,9 +64,9 @@ class _LoginViewState extends State<LoginView> {
                 );
                 final user = AuthService.firebase().currentUser;
                 if (user?.isEmailVerified ?? false) {
-                  if (mounted) context.go(notesRoute);
+                   Navigator.of(context).pushNamedAndRemoveUntil(notesRoute, (route) => false);
                 } else {
-                  if (mounted) context.go(verifyEmailRoute);
+                   Navigator.of(context).pushNamedAndRemoveUntil(verifyEmailRoute, (route) => false);
                 }
               } on UserNotFoundAuthException {
                 await showErrorDialog(
@@ -92,7 +89,7 @@ class _LoginViewState extends State<LoginView> {
           ),
           TextButton(
             onPressed: () {
-              context.go(registerRoute);
+              Navigator.of(context).pushNamedAndRemoveUntil(registerRoute, (_) => false);
             },
             child: const Text('Not registered yet? Register here!'),
           )

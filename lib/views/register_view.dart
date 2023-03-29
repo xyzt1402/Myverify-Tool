@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:learningdart/constants/routes.dart';
 import 'package:learningdart/services/auth/auth_exceptions.dart';
 import 'package:learningdart/services/auth/auth_services.dart';
@@ -64,9 +63,8 @@ class _RegisterViewState extends State<RegisterView> {
                   email: email,
                   password: password,
                 );
-                final user = AuthService.firebase().currentUser;
                 AuthService.firebase().sendEmailVerification();
-                if (mounted) context.push(verifyEmailRoute);
+                if (mounted) Navigator.of(context).pushNamed(verifyEmailRoute);
               } on WeakPassWordAuthException {
                 await showErrorDialog(context, 'Weak password');
               } on EmailAlreadyInUseAuthException {
@@ -81,7 +79,7 @@ class _RegisterViewState extends State<RegisterView> {
           ),
           TextButton(
               onPressed: () {
-                context.go(loginRoute);
+                Navigator.of(context).pushNamedAndRemoveUntil(loginRoute, (_) => false);
               },
               child: const Text('Already register? Login here!'))
         ],

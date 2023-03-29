@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:learningdart/constants/routes.dart';
 import 'package:learningdart/services/auth/auth_services.dart';
 
@@ -28,7 +27,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
         TextButton(
             onPressed: () async {
               await AuthService.firebase().logOut();
-              if (mounted) context.go(registerRoute);
+              if (mounted) Navigator.of(context).pushNamedAndRemoveUntil(registerRoute, (_) => false);
             },
             child: const Text('Restart'))
       ]),
