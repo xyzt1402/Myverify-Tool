@@ -136,6 +136,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ));
       }
     });
+
+    //Go to SignerInfo
+    
+
     //log out
     on<AuthEventLogOut>((event, emit) async {
       try {

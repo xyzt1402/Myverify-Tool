@@ -37,3 +37,5 @@ class AuthEventForgotPassword extends AuthEvent {
 class AuthEventShouldRegister extends AuthEvent {
   const AuthEventShouldRegister();
 }
+
+

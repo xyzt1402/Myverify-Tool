@@ -1,33 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:learningdart/services/cloud/cloud_note.dart';
 import 'package:learningdart/utilities/dialogs/delete_dialog.dart';
+import 'dart:io';
+import 'package:path/path.dart' as path;
 
-typedef NoteCallback = void Function(CloudNote note);
+typedef FileCallback = void Function(FileSystemEntity file);
 
-class NotesListView extends StatelessWidget {
-  final Iterable<CloudNote> notes;
-  final NoteCallback onDeletenote;
-  final NoteCallback onTap;
+class FilesListView extends StatelessWidget {
+  final List<FileSystemEntity> fileEntities;
+  final FileCallback onDeletefile;
 
-  const NotesListView({
+  const FilesListView({
     Key? key,
-    required this.notes,
-    required this.onDeletenote,
-    required this.onTap,
+    required this.fileEntities,
+    required this.onDeletefile,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: notes.length,
+      itemCount: fileEntities.length,
       itemBuilder: (context, index) {
-        final note = notes.elementAt(index);
+        final file = fileEntities.elementAt(index);
         return ListTile(
-          onTap: () {
-            onTap(note);
-          },
           title: Text(
-            note.text,
+            path.basename(file.path),
             maxLines: 1,
             softWrap: true,
             overflow: TextOverflow.ellipsis,
@@ -35,7 +31,7 @@ class NotesListView extends StatelessWidget {
           trailing: IconButton(onPressed: () async {
             final shouldDelete = await showDeleteDialog(context);
             if (shouldDelete) {
-              onDeletenote(note);
+              onDeletefile(file);
             }
           }, icon: const Icon(Icons.delete)),
         );
